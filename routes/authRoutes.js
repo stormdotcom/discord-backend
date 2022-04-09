@@ -20,7 +20,7 @@ router.get('/test',verifyToken, (req, res)=>{
     res.send("api live")
 })
 
-router.post('/register', verifyToken, validator.body(registerSchema), register)
+router.post('/register', verifyToken,  validator.body(registerSchema), register)
 router.post('/login',validator.body(loginSchema), login)
 
 export default router;
