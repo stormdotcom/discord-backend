@@ -4,7 +4,7 @@ const config = process.env;
 
 export const verifyToken = (req, res, next)=> {
     try {
-        let token =  req.query.token || req.headers['Authorization'];
+        let token =  req.query.token || req.headers['authorization'];
 
         if(!token) return res.status(403).json({message: "token required for Authentication"})
     
