@@ -32,6 +32,7 @@ export const login = (async(req, res)=> {
 export const register = (async(req, res)=> {
 
     const {username, password, email} = req.body;
+    console.log("username", username)
     try {
        const isUserExists = await User.findOne({email:email});
 
@@ -39,7 +40,7 @@ export const register = (async(req, res)=> {
 
         const hashedPassword = await bcrypt.hash(password, 10); 
 
-        const result = await User.create({email, username, password:hashedPassword})
+        const result = await User.create({email, username:username, password:hashedPassword})
         const id = result._id.toString()
         const token = jwt.sign({userId:id.toString(), email, }, process.env.SECRET_KEY, {expiresIn: '2h' })
 

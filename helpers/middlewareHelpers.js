@@ -13,3 +13,7 @@ export const loginSchema = Joi.object({
 export const friendRequestPostSchema = Joi.object({
     targetMailAddress: Joi.string().email()
 })
+
+export const friendRequestAcceptPostSchema = Joi.object({
+    id:Joi.string().required()
+})
