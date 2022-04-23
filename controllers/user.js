@@ -20,7 +20,7 @@ export const login = (async(req, res)=> {
 
         const token = jwt.sign({userId:id, email, }, process.env.SECRET_KEY, {expiresIn: '2h' })
 
-        res.status(200).json({userDetails: {email:user.email, username: user.username, token }})
+        res.status(200).json({userDetails: {_id: user._id, email:user.email, username: user.username, token }})
 
     } catch (error) {
         console.log(error.message)
@@ -44,7 +44,7 @@ export const register = (async(req, res)=> {
         const id = result._id.toString()
         const token = jwt.sign({userId:id.toString(), email, }, process.env.SECRET_KEY, {expiresIn: '2h' })
 
-        res.status(201).json({userDetails: {email:result.email, username:isUserExists?.username, token}})
+        res.status(201).json({userDetails: {_id: isUserExists._id, email:result.email, username:isUserExists?.username, token}})
 
     } catch (error) {
         console.log(error.message)
